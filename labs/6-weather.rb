@@ -30,3 +30,17 @@ weather_data = {
     { temperature: 60, conditions: "Rainy", precipitation: 0.9 }
   ]
 }
+
+# if weather_data {forecast{precipitation}} > 0.5 && wather_data {forecast{conditions}} != "Rainy"
+# puts weather_data
+puts "Currently is #{weather_data[:current][:temperature]} degrees and #{weather_data[:current][:conditions]}"
+
+for day in weather_data[:forecast]
+  if day[:conditions] != "Rainy" && day[:precipitation] > 0.5
+    puts "#{day[:temperature]} degrees and #{day[:conditions]} with a #{(day[:precipitation]*100).to_i}% chance of rain"
+  else
+    puts "#{day[:temperature]} degrees and #{day[:conditions]}"
+  end
+end
+
+
